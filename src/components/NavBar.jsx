@@ -5,7 +5,7 @@ import { types } from '../types/types';
 
 
 const NavBar = ({ history }) => {
-    const { user, dispatch } = useContext(AuthContext);
+    const { dispatch } = useContext(AuthContext);
     const salir = () => {
         dispatch({ type: types.logout })
 
@@ -20,16 +20,15 @@ const NavBar = ({ history }) => {
         <Fragment>
             <header>
                 <div className="menu-toggle" id="m" onClick={add} />
-                <a href="/"><img src="../logo.svg" onClick={() => history.push("/")} className="logo " /></a>
+                <a href="/"><img alt="HEROES APP" src="../logo.svg" className="logo " /></a>
                 <a href="/" className="logo"> HEROES APP</a>
                 <nav id="n">
                     <ul>
                         <li><strong><NavLink to="/marvel" activeClassName="active" >MARVEL COMICS</NavLink></strong></li>
                         <li><strong><NavLink to="/dc" activeClassName="active">DC COMICS</NavLink></strong></li>
                         <li><strong><NavLink to="/buscar" activeClassName="active">BUSCADOR</NavLink></strong></li>
-                        <li><strong><a onClick={salir}>SALIR</a></strong></li>
+                        <li><strong><p  onClick={salir}>SALIR</p></strong></li>
                     </ul>
-
                 </nav>
                 <div className="clearfix" />
             </header>

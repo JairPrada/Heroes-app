@@ -88,16 +88,20 @@ nav ul {
 nav ul li {
   list-style: none;
 }
-nav ul li a {
+nav ul li a{
   display: block;
   margin: 10px 0;
   padding: 10px 20px;
   text-decoration: none;
   color: white;
 }
-
-
-
+nav ul li p{
+  display: block;
+  margin: 10px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+}
 .logo {
   color: white;
   height: 60px;
@@ -121,7 +125,12 @@ nav ul li a:hover {
   color: white;
   transition: 0.5s;
 }
-
+nav ul li p.active,
+nav ul li p:hover {
+  background: #56a9ff;
+  color: white;
+  transition: 0.5s;
+}
 @media (max-width: 1200px) {
   header {
     margin: 0px;

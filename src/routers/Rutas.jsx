@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import VistaDC from '../components/VistaDC';
 import VistaMarvel from '../components/VistaMarvel';
@@ -9,7 +9,7 @@ import NavBar from '../components/NavBar';
 
 
 function Rutas({ history }) {
-    const { Header, Content, Footer } = Layout;
+    const { Content, Footer } = Layout;
 
     return (
         <div>

@@ -7,7 +7,6 @@ import Title from 'antd/lib/typography/Title';
 
 const HeroCaracteristicas = ({ history }) => {
     const { id } = useParams();
-    console.log(history)
     const volver = () => {
         if (history.length <= 2) {
             history.push("/marvel")

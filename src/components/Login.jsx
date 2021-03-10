@@ -4,6 +4,7 @@ import { types } from '../types/types';
 
 const Login = ({ history }) => {
     const { dispatch } = useContext(AuthContext)
+    const ultimaRuta = localStorage.getItem('ultimaRuta') || '/'
     const iniciar = () => {
         dispatch({
             type: types.login,
@@ -11,7 +12,7 @@ const Login = ({ history }) => {
                 name: 'Jair Prada'
             }
         })
-        history.replace("/marvel")
+        history.replace(ultimaRuta)
     }
     return (
         <Fragment>
