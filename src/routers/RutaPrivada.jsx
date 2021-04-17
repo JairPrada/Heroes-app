@@ -12,9 +12,7 @@ const RutaPrivada = ({ isAuthenticated, component: Component, ...rest }) => {
             )}
         />
     )
-
 }
-
 RutaPrivada.prototype = {
     isAuthenticated: PropTypes.bool.isRequired,
     componente: PropTypes.func.isRequired
