@@ -115,7 +115,18 @@ nav ul li p{
   font-weight: 700;
   text-decoration: none;
 }
+.t{
+  color: white;
+  height: 60px;
+  font-size: 36px;
+  line-height: 60px;
+  text-align: center;
+  box-sizing: border-box;
+  font-weight: 700;
+  text-decoration: none;
+  margin: 0px;
 
+}
 .clearfix {
   clear: both;
 }
