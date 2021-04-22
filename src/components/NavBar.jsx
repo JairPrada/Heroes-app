@@ -1,4 +1,5 @@
 import React, { Fragment, useContext } from 'react';
+import firebase from "./firebase";
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthContext';
 import { types } from '../types/types';
@@ -6,9 +7,9 @@ import { types } from '../types/types';
 
 const NavBar = ({ history }) => {
     const { dispatch } = useContext(AuthContext);
-    const salir = () => {
+    const salir = async () => {
+        await firebase.auth().signOut()
         dispatch({ type: types.logout })
-
     }
     const add = () => {
         const m = document.getElementById("m")
@@ -27,7 +28,7 @@ const NavBar = ({ history }) => {
                         <li><strong><NavLink to="/marvel" activeClassName="active" >MARVEL COMICS</NavLink></strong></li>
                         <li><strong><NavLink to="/dc" activeClassName="active">DC COMICS</NavLink></strong></li>
                         <li><strong><NavLink to="/buscar" activeClassName="active">BUSCADOR</NavLink></strong></li>
-                        <li><strong><p  onClick={salir}>SALIR</p></strong></li>
+                        <li><strong><p onClick={salir}>SALIR</p></strong></li>
                     </ul>
                 </nav>
                 <div className="clearfix" />
