@@ -5,7 +5,9 @@ import { types } from '../types/types';
 import { GoogleCircleFilled, FacebookFilled } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import firebase from './firebase';
-const Login = ({ history }) => {
+
+const Register = ({history}) => {
+
     const { dispatch } = useContext(AuthContext)
     const ultimaRuta = localStorage.getItem('ultimaRuta') || '/'
     const iniciar = ({ usuario }) => {
@@ -17,18 +19,18 @@ const Login = ({ history }) => {
         })
         history.replace(ultimaRuta)
     }
-    const Correo = async (e) => {
+    const CrearCuenta = async (e) => {
         e.preventDefault();
         const email = e.target.correo.value;
         const password = e.target.contraseña.value;
-        const resultado = await firebase.auth().signInWithEmailAndPassword(email, password)
+        const resultado = await firebase.auth().createUserWithEmailAndPassword(email, password)
             .catch((error) => {
                 console.log(error.message)
                 message.error(error.message)
             });
         if (resultado) {
             console.log(resultado)
-            message.success("Bienvenido a Heroes App amigo");
+            message.success("Creacion de cuenta correcta")
             iniciar(resultado.user)
         }
     }
@@ -41,7 +43,6 @@ const Login = ({ history }) => {
             });
         if (resultado) {
             console.log(resultado)
-            message.success("Bienvenido a heroes app "+resultado.user.displayName);
             iniciar(resultado.user)
         }
     }
@@ -54,10 +55,10 @@ const Login = ({ history }) => {
             });
         if (resultado) {
             console.log(resultado)
-            message.success("Bienvenido a heroes app "+resultado.user.displayName);
             iniciar(resultado.user)
         }
     }
+
 
     return (
         <Fragment>
@@ -65,19 +66,18 @@ const Login = ({ history }) => {
                 <Col xs={18} sm={12} lg={10} style={{ background: "#0E1215F2", borderRadius: "5px", padding: "50px 0px" }}>
                     <Row align="center" >
                         <Col xs={20}>
-                            <Typography.Title level={1} style={{ color: "white", textAlign: "center", marginBottom: "20px" }} >Bienvenido a HeroesApp</Typography.Title>
+                            <Typography.Title level={1} style={{ color: "white", textAlign: "center", marginBottom: "20px" }} >Registrarse en HeroesApp</Typography.Title>
                         </Col>
                         <Col xs={15} sm={18} lg={15} >
-                            <form onSubmit={Correo}>
+                            <form onSubmit={CrearCuenta}>
                                 <p style={{ textAlign: "center" }}>
                                     <input type="email" name="correo" style={{ width: "100%", borderRadius: "3px", border: "none", padding: "10px" }} placeholder="Correo" />
                                 </p>
                                 <p >
                                     <input type="password" name="contraseña" style={{ width: "100%", borderRadius: "3px", border: "none", padding: "10px" }} placeholder="Contraseña" />
-                                    <Link style={{ textAlign: "left" }}>¿Olvidaste tu contraseña?</Link>
                                 </p>
                                 <p style={{ textAlign: "center" }}>
-                                    <Button type="primary" htmlType="submit" style={{ width: "90%", borderRadius: "2rem", backgorund: "red" }}  >Iniciar Sesion</Button>
+                                    <Button type="primary" htmlType="submit" style={{ width: "90%", borderRadius: "2rem", backgorund: "red" }}  >Crear cuenta</Button>
                                 </p>
                             </form>
                             <Typography.Title level={4} style={{ color: "white", textAlign: "center" }}>
@@ -94,7 +94,7 @@ const Login = ({ history }) => {
                                 <Button type="primary" style={{ background: "#3A6FE5", width: "90%", borderRadius: "2rem", border: "none" }} onClick={Facebook} icon={<FacebookFilled />}>Continuar con Facebook</Button>
                             </p>
                             <p style={{ color: "white" }}>
-                                ¿Aún no estás en HeroesApp?  <Link to="/signin" >Regístrate</Link>
+                                Ya tengo una cuenta en HeroesApp  <Link to="/login" >Iniciar Sesion</Link>
                             </p>
                         </Col>
                     </Row>
@@ -103,4 +103,4 @@ const Login = ({ history }) => {
         </Fragment>
     )
 }
-export default Login;
+export default Register;

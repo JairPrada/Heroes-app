@@ -5,6 +5,7 @@ import Login from '../components/Login';
 import { AuthContext } from '../auth/AuthContext';
 import { authReduccer } from '../auth/authReduccer';
 import RutaPrivada from './RutaPrivada';
+import Register from '../components/Register';
 const init = () => {
     return JSON.parse(localStorage.getItem('user')) || { loged: false }
 }
@@ -22,6 +23,7 @@ function RutasPrincipal() {
                 <Router>
                     <Switch>
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/signin" component={Register} />
                         <RutaPrivada path="/" component={Rutas} isAuthenticated={user.loged} />
                     </Switch>
                 </Router>
